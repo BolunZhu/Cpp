@@ -1,3 +1,4 @@
+//这是c++课本上的远古时期的代码 需要用turboc运行 这里就不说了
 #include <dos.h>
 #include <conio.h>
 #include <stdio.h>
@@ -16,7 +17,7 @@ void interrupt int1c(...) {
     enable( );
     (*oldint1c)( );
     if(delays){delays--;return ; }
-    if(freq[snd[]numbner]==0){
+    if(freq[snd[numbner]]==0){
         nosound();
         delays=180;
         number=0;
