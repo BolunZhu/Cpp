@@ -19,16 +19,29 @@
 // 需要注意的是 缺省参数只能放到不缺省的参数的右边
 // int fun(int x=1, int y, int z=1) 是错的 因为 x z 为缺省参数 y为非缺省参数 x不能在y的左边
 // 缺省参数的定义既可以放在声明 又可以放在定义 
+// 如果没有必要 最好不要使用...来省略参数 可以考虑函数的重载
+// 在C++primer中 称这种在声明／定义中赋初值并且可在调用中省略的参数为默认实参
+// 默认实参的右边都只能是默认实参 同一个默认实参只能被声明一次 但是不同的可以分开几次声明 
+int f1(int a,int b,int c, int d);
+int f1(int a,int b,int c, int d=1);
+int f1(int a,int b,int c=2, int d);
+//以上的多次声明是可以的 但是下面这一行是错误的
+int f1(int a=5,int b,int c, int d);
+//原因是b还没有声明默认实参 因此a作为默认实参不能在b的左边
 
 #include <iostream>
 using namespace std;
-int f(int & x){
-    x=x+5;
-    return x;
-}
+int i =1;
+int j =2;
+int f(int & x);
 int main(int argc, char const *argv[])
 {
     int z = 5;
-    int y =f(z+5);
+    //int y =f(z+5);
     return 0;
 }
+int f(int & x=j){
+    x=x+5;
+    return x;
+}
+//目前出现的问题就是 C++Primer上告诉我们不能够传右值到普通引用参数上 而我们原来的书上又说会使用匿名变量初始化 所以导致了矛盾 这个矛盾我目前还没有得到答案 只知道编译器是不能编译通过以上代码的
