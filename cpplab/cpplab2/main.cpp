@@ -1,6 +1,14 @@
+//
+//  main.cpp
+//  U201614788-2
+//
+//  Created by 朱博抡
+//  Copyright © 2018年 朱博抡. All rights reserved.
+//
+
 #include <iostream>
 #include <string>
-#include "lab2.cpp"
+#include "U201614788_2.hpp"
 int main(int argc, const char * argv[]) {
     STACK *p;
     STACK * temp;//store stack to be delete
