@@ -46,6 +46,11 @@ int STACK::howMany ( ) const	//返回栈的实际元素个数pos
 
 int  STACK::getelem (int x) const	//取下标x处的栈元素
 {
+    
+    if (x>=pos) {
+        throw("getelem overflow! cannot get elem out of range");
+    }
+    
     return elems[x];
 }
 STACK& STACK::push(int e) 	//将e入栈,并返回栈
