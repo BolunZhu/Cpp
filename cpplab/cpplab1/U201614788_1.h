@@ -1,13 +1,13 @@
 //
-//  Header.h
+//  U201614788_1.h
 //  U201614788-1
 //
 //  Created by 朱博抡 on 2018/10/11.
 //  Copyright © 2018年 朱博抡. All rights reserved.
 //
 
-#ifndef Header_h
-#define Header_h
+#ifndef U201614788_1_h
+#define U201614788_1_h
 //typedef struct stack STACK;
 struct STACK {
     int *elems; //申请内存用于存放栈的元素
@@ -25,4 +25,4 @@ STACK * const pop(STACK * const p, int &e); //出栈道e，并返回p
 STACK * const assign(STACK * const p , const STACK &s); //赋s给p指的栈，并返回p
 void print(const STACK * const p);  //打印p指向的栈
 void destroySTACK(STACK*const p);   //销毁p指向的栈
-#endif /* Header_h */
+#endif /* U201614788_1_h */
