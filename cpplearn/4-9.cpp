@@ -11,6 +11,7 @@ using namespace std;
 const volatile int a=1;//const volatile可以修饰同一个对象
 // 凡是const能够出现的地方volatile也能出现 而且可以同时出现
 // 他们不能修饰构造和析构函数
+// 挥发对象意味着他的值可能随时发生改变 因此编译时不对他做任何访问优化。
 
 class A{
     int a;
