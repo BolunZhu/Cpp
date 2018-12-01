@@ -3,6 +3,7 @@
 #include "lab2.cpp"
 int main(int argc, const char * argv[]) {
     STACK *p;
+    STACK * temp;//store stack to be delete
     int i=0;
     try {
         for (i=1; i<argc; i++) {
@@ -44,13 +45,21 @@ int main(int argc, const char * argv[]) {
                 case 'C':
                 {
                     printf("C  ");
+                    temp = p;
+                    p=new STACK(*p);
                     p->print();
+                    delete temp;
                     break;
                 }
                 case 'A':
                 {
                     printf("A  ");
+                    temp = p;
+                    int size=atoi(argv[i+1]);
+                    p=new STACK(size);
+                    p=& p->assign(*temp);
                     p->print();
+                    delete temp;
                     i++;
                     break;
                 }
