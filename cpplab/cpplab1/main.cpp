@@ -9,13 +9,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Header.h"
+#include "U201614788_1.h"
 int main(int argc, const char * argv[]) {
     STACK s;
     s.pos=0;
     s.max=0;
     s.elems=NULL;
-    STACK * const p=&s;
+    STACK * p=&s;
+    STACK * temp;
     int i=0;
     try {
         for (i=1; i<argc; i++) {
@@ -57,13 +58,23 @@ int main(int argc, const char * argv[]) {
                 case 'C':
                 {
                     printf("C  ");
+                    temp = p;
+                    p =(STACK *) malloc(sizeof(STACK));
+                    initSTACK(p,*temp);
                     print(p);
+                    destroySTACK(temp);
                     break;
                 }
                 case 'A':
                 {
                     printf("A  ");
+                    temp = p;
+                    int size = atoi(argv[i+1]);
+                    p =(STACK *) malloc(sizeof(STACK));
+                    initSTACK(p,size);
+                    p = assign(p,*temp);
                     print(p);
+                    destroySTACK(temp);
                     i++;
                     break;
                 }
