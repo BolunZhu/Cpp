@@ -1,13 +1,16 @@
 #include <iostream>
 #include <string>
 #include "U201614788_4.h"
+
 //初始化栈：最多m个元素
 STACK::STACK(int m): elems(new int[m]) , max(m) , pos(0)
 {
+    if(!elems) throw("new elems error");
 }		
 //用栈s拷贝初始化栈
 STACK::STACK(const STACK&s): elems(new int[s.max]) , max(s.max) ,pos(s.pos)
 {
+    if(!elems) throw("new elems error");
   for(int i = 0; i < pos; i++)
     {
         elems[i]=s.elems[i];
@@ -64,7 +67,8 @@ void STACK::print( ) const			//打印栈
 }
 STACK::~STACK( )					//销毁栈
 {
-    delete[](this->elems);
+    if(elems) delete[](this->elems);
+    
 }
 
 QUEUE::QUEUE(int m):STACK(m),s2(m){}

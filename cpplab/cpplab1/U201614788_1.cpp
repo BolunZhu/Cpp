@@ -6,6 +6,7 @@
 void initSTACK(STACK * const p ,int m)//初始化p指向的栈：最多m个元素
 {
     int * temp = (int *)malloc(sizeof(int)*m);
+    if(!temp) throw("malloc elems error");
     p->elems=temp;
     p->max=m;
     p->pos=0;
@@ -14,6 +15,7 @@ void initSTACK(STACK * const p ,int m)//初始化p指向的栈：最多m个元�
 void initSTACK(STACK *const p,const STACK &s)//用栈s初始化p指向的栈
 {
     p->elems=(int *) malloc(sizeof(int)* (s.max));
+    if(!p->elems) throw("new elems error");
     p->max=s.max;
     p->pos=s.pos;
     
@@ -61,7 +63,7 @@ STACK * const pop(STACK * const p, int &e) //出栈道e，并返回p
 STACK * const assign(STACK * const p , const STACK &s) //赋s给p指的栈，并返回p
 {
     int * temp = p->elems;
-    free(temp);
+    if(temp) free(temp);
     initSTACK(p,s);
     return p;
 }

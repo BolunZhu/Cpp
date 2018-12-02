@@ -5,15 +5,15 @@
 
 STACK::STACK(int n=1): elems(new int[n]) , max(n) , pos(0)
 {
-    
+    if(!elems) throw("new elems error");
 }
 STACK::~STACK(){
-    delete[](this->elems);
+    if(elems) delete[](this->elems);
 }
 
 STACK::STACK(const STACK &s ) : elems(new int[s.max]) , max(s.max) ,pos(s.pos) //用栈s拷贝初始化栈
 {
-    
+    if(!elems) throw("new elems error");
     for(int i = 0; i < pos; i++)
     {
         elems[i]=s.elems[i];
@@ -63,8 +63,8 @@ STACK& STACK::pop(int &e) 	//出栈到e,并返回栈
 STACK& STACK::assign(const STACK&s) //赋s给栈,并返回被赋值的栈
 {
     this->~STACK();
-    new(this) STACK(s);
-    return *this;
+    if(new(this) STACK(s))return *this;
+    throw("new stack error");
 }
 
 void STACK::print( ) const		//打印栈
