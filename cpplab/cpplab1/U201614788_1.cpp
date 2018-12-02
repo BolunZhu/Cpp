@@ -74,6 +74,11 @@ void print(const STACK * const p)  //打印p指向的栈
 }
 void destroySTACK(STACK*const p)   //销毁p指向的栈
 {
-    free(p->elems);
+    
+    if (p) {  
+        if (p->elems) {
+           free(p->elems);
+        }
     free(p);
+    }
 }
