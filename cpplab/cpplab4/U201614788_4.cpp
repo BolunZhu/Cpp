@@ -82,10 +82,62 @@ int QUEUE::full()const{
 int QUEUE::operator [](int x)const{
     
     if (x<s2) {
-        return s2[x];
+        return s2[s2-1-x];
     }
     else {
-        return STACK::operator [](s2-x+1);
+        return STACK::operator [](x-s2);
     }
     
+}
+
+QUEUE& QUEUE::operator<<(int e){
+    if(full()){
+        throw("Full when in queue!");
+    }
+    
+    if (STACK::size()==STACK::operator int()) {
+        /* in_queue full */
+        // let in_queue into out_queue
+        int temp=0;
+        while(STACK::operator int()){
+            STACK::operator>>(temp);
+            s2<<(temp);
+        }
+    }
+    STACK::operator<<(e);
+    return *this;
+}
+
+QUEUE& QUEUE::operator>>(int &e){
+    if(!s2){
+        
+        if (!STACK::operator int()) {
+            //stack downflow
+            throw("Cannot pop element from queue!");
+        }
+        else {
+            // let in_queue into out_queue
+            int temp=0;
+            while(STACK::operator int()){
+                STACK::operator>>(temp);
+                s2<<(temp);
+            }
+        }
+        
+    }
+    s2>>(e);
+    return *this;
+}
+QUEUE::~QUEUE(){}
+QUEUE& QUEUE::operator=(const QUEUE&s){
+    this->~QUEUE();
+    new (this) QUEUE(s);
+    return *this;
+}
+void QUEUE::print()const{
+    
+    for(int i = 0; i < this->operator int(); i++)
+    {
+        printf("%d  ",(*this)[i]);
+    }
 }

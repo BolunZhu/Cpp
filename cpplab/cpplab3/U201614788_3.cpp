@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "U201614788_3.hpp"
+#include "U201614788_3.h"
 
 //初始化栈：最多m个元素
 STACK::STACK(int m): elems(new int[m]) , max(m) , pos(0)

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "U201614788_2.hpp"
+#include "U201614788_2.h"
 
 
 STACK::STACK(int n=1): elems(new int[n]) , max(n) , pos(0)
